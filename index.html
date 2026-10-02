@@ -4,12 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="RawIron Log — a focused workout logging app for creating, tracking, cloning, and reviewing strength workouts.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawIron Log">
+  <meta property="og:title" content="RawIron Log">
+  <meta property="og:description" content="RawIron Log — a focused workout logging app for creating, tracking, cloning, and reviewing strength workouts.">
+  <meta name="twitter:card" content="summary">
   <title>RawIron Log</title>
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="theme-graphite">
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">
@@ -17,6 +22,8 @@
       <span class="brand-text">RawIron <span>Log</span></span>
     </a>
     <nav aria-label="Main navigation">
+      <a class="nav-home" href="../index.html">&larr; RawManor</a>
+      <a href="tips.html">Tips</a>
       <a href="support.html">Support</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
@@ -32,11 +39,22 @@
         <h1>Strength training,<br><em>without the noise.</em></h1>
         <p class="lead">A straightforward workout log built around your training—not around required templates, accounts, or an internet connection.</p>
         <div class="actions">
-          <a class="button primary" href="support.html">Get Support</a>
+          <!-- When the listings go live, replace each span with:
+               <a class="button primary store" href="STORE_URL">Download on the App Store</a> -->
+          <span class="button primary store is-pending">App Store · Coming soon</span>
+          <span class="button primary store is-pending">Google Play · Coming soon</span>
+        </div>
+        <div class="actions actions-secondary">
+          <a class="button secondary" href="tips.html">Tips &amp; Features</a>
+          <a class="button secondary" href="support.html">Get Support</a>
           <a class="button secondary" href="privacy.html">Privacy Policy</a>
         </div>
       </div>
-      <img class="hero-logo" src="images/logo-480.png" alt="RawIron Log app icon" width="240" height="240">
+      <div class="hero-devices">
+        <figure class="device back"><img src="images/screens/welcome-light.jpg" alt="RawIron Log welcome screen in light mode" width="589" height="1278"></figure>
+        <figure class="device front"><img src="images/screens/welcome-dark.jpg" alt="RawIron Log welcome screen in dark mode" width="589" height="1278"></figure>
+        <p class="device-caption">Light and dark, following your phone.</p>
+      </div>
     </div>
   </section>
 
@@ -94,8 +112,9 @@
     <div class="container centered">
       <p class="eyebrow">APP INFORMATION</p>
       <h2>Need help?</h2>
-      <p class="narrow">Visit Support for contact information and common help topics, or review the Privacy Policy and Terms of Use.</p>
+      <p class="narrow">See Tips &amp; Features for what the app can do and where to find it, visit Support for contact information and common help topics, or review the Privacy Policy and Terms of Use.</p>
       <div class="link-row">
+        <a href="tips.html">Tips &amp; Features</a>
         <a href="support.html">Support</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>
@@ -106,7 +125,7 @@
 
 <footer>
   <div class="container footer-inner">
-    <span>© 2026 RawIron Log</span>
+    <span>© 2026 RawIron Log · A <a href="../index.html">RawManor</a> app</span>
     <span>Version-independent support site</span>
   </div>
 </footer>

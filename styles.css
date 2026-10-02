@@ -1,14 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
+  /* RawManor brand palette ("Graphite & Iron Red"); shared with the RawIron Log app (Resources/Styles/Colors.xaml) */
   --ink: #171a18;
   --muted: #626862;
   --paper: #f7f5ef;
   --surface: #ffffff;
   --line: #deded7;
-  --accent: #8d2f24;
-  --accent-dark: #67231c;
   --soft: #ece9df;
+  /* Iron Red: the red bar from the RawManor and RawIron Log marks */
+  --accent: #b3241b;
+  --accent-dark: #8a1b14;
+  /* graphite (the app's dark theme) */
+  --graphite: #141518;
+  --graphite-surface: #1c1e21;
+  --graphite-raised: #25282c;
+  --graphite-line: #33373c;
+  --graphite-text: #f2f3f4;
+  --graphite-muted: #9da3a8;
+  --accent-on-dark: #e8483d;
   --max: 1080px;
 }
 
@@ -45,12 +55,13 @@ a { color: inherit; }
 nav { display: flex; gap: 24px; }
 nav a { text-decoration: none; color: var(--muted); font-size: .9rem; }
 nav a:hover, nav a.active { color: var(--ink); }
+nav a.nav-home { color: var(--ink); font-weight: 600; padding-right: 24px; border-right: 1px solid var(--line); }
 
 .hero {
   min-height: 620px;
   display: flex; align-items: center;
   background:
-    radial-gradient(circle at 80% 20%, rgba(141,47,36,.09), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(179,36,27,.08), transparent 32%),
     linear-gradient(135deg, var(--paper), #efede5);
   border-bottom: 1px solid var(--line);
 }
@@ -62,6 +73,14 @@ nav a:hover, nav a.active { color: var(--ink); }
   font-size: .75rem; font-weight: 700; letter-spacing: .18em;
   color: var(--accent);
 }
+/* Brand signature: the short Iron Red bar from the RawManor and RawIron Log marks (also in the app) */
+.eyebrow::before {
+  content: ""; display: block;
+  width: 32px; height: 3px; margin-bottom: 14px;
+  border-radius: 2px; background: currentColor;
+}
+.centered .eyebrow::before { margin-left: auto; margin-right: auto; }
+.card .eyebrow::before { display: none; }
 h1, h2, h3 {
   font-family: "Libre Baskerville", Georgia, serif;
   line-height: 1.2;
@@ -79,6 +98,9 @@ p { margin: 0 0 18px; }
 }
 .button.primary { background: var(--ink); color: white; }
 .button.secondary { background: transparent; }
+.button.is-pending { opacity: .55; cursor: default; }
+.actions-secondary { margin-top: 12px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 .section { padding: 100px 0; }
 .section.muted { background: var(--soft); }
@@ -86,7 +108,7 @@ p { margin: 0 0 18px; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .card {
   background: var(--surface); border: 1px solid var(--line);
-  padding: 28px; border-radius: 10px;
+  padding: 28px; border-radius: 12px;
 }
 .card p { color: var(--muted); font-size: .95rem; }
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
@@ -108,14 +130,67 @@ p { margin: 0 0 18px; }
   background: var(--surface);
 }
 .support-email { font-weight: 700; font-size: 1.1rem; }
+
+/* Tips & Features: section links, then one list of tips per section (a tip's name, then how to find it) */
+.tip-jump { flex-wrap: wrap; gap: 8px 20px; margin: 8px 0 12px; }
+.tip-jump a { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.tip-section { scroll-margin-top: 90px; }
+.tips { margin: 0; }
+.tips > div { padding: 16px 0; border-top: 1px solid var(--line); }
+.tips > div:last-child { border-bottom: 1px solid var(--line); }
+.tips dt { font-weight: 700; }
+.tips dd { margin: 4px 0 0; color: var(--muted); }
 footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: .85rem; }
 .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+/* ===== RawIron Log product theme: graphite, like the app's dark mode =====
+   The product pages (index.html, tips.html) go dark with the app's DM Sans. RawManor pages and the
+   RawIron Log reading pages (privacy, terms, support) stay on warm paper with serif headings, for long-form legibility. */
+body.theme-graphite {
+  --ink: var(--graphite-text);
+  --muted: var(--graphite-muted);
+  --line: var(--graphite-line);
+  --surface: var(--graphite-surface);
+  --soft: var(--graphite-raised);
+  --accent: var(--accent-on-dark);
+  background: var(--graphite);
+  color: var(--ink);
+}
+.theme-graphite .site-header { background: rgba(20,21,24,.88); }
+.theme-graphite .brand,
+.theme-graphite h1, .theme-graphite h2, .theme-graphite h3 {
+  font-family: "DM Sans", system-ui, sans-serif; font-weight: 700;
+}
+.theme-graphite h1 { font-size: clamp(2.5rem, 5.6vw, 4.4rem); letter-spacing: -.035em; }
+.theme-graphite h1 em { font-style: normal; font-weight: 700; color: var(--muted); }
+.theme-graphite .brand-text span { font-style: normal; font-weight: 400; color: var(--muted); }
+.theme-graphite .hero {
+  background:
+    radial-gradient(circle at 78% 30%, rgba(232,72,61,.12), transparent 34%),
+    linear-gradient(160deg, #1b1d20, var(--graphite) 60%);
+}
+.theme-graphite .button.primary { color: var(--graphite); }
+.theme-graphite .card { background: var(--surface); }
+
+/* phone screenshots in a brushed-steel bezel, echoing the app icon */
+.device {
+  margin: 0; padding: 9px; border-radius: 46px;
+  background: linear-gradient(145deg, #5b6066, #2a2d31 45%, #45494e 70%, #1c1e21);
+  box-shadow: 0 30px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.device img { display: block; width: 100%; height: auto; border-radius: 38px; }
+.hero-devices { position: relative; width: clamp(260px, 30vw, 360px); }
+.hero-devices .device { width: 76%; }
+.hero-devices .back { position: absolute; top: 0; left: 0; transform: scale(.9); transform-origin: top left; opacity: .92; }
+.hero-devices .front { position: relative; margin: 14% 0 0 auto; }
+.device-caption { margin-top: 18px; text-align: center; color: var(--muted); font-size: .85rem; }
 
 @media (max-width: 800px) {
   .grid { grid-template-columns: 1fr 1fr; }
   .split { grid-template-columns: 1fr; gap: 25px; }
   .hero-split { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .hero-logo { order: -1; width: 120px; }
+  .hero-devices { width: min(320px, 80%); margin: 0 auto; }
 }
 @media (max-width: 560px) {
   .container { width: min(calc(100% - 28px), var(--max)); }
@@ -123,6 +198,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted)
   .brand img { width: 30px; height: 30px; }
   nav { gap: 13px; }
   nav a { font-size: .82rem; }
+  nav a.nav-home { padding-right: 13px; }
   .hero { min-height: 540px; }
   .hero-inner { padding: 70px 0; }
   .section, .legal { padding: 70px 0; }
